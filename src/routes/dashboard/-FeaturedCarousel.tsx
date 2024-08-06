@@ -5,9 +5,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carouselFeatured";
-import AnimeCards from "./-HeroAnimeCards";
-import { AnimeLists } from "@/types/anime-types";
+import { AnimeLists } from "@/types/anilist-types";
 import HeroAnimeCards from "./-HeroAnimeCards";
+import { Link } from "@tanstack/react-router";
 
 type FeaturedCarouselProps = {
   animelist: AnimeLists;
@@ -28,7 +28,7 @@ export default function FeaturedCarousel({ animelist }: FeaturedCarouselProps) {
           <CarouselNext />
         </div>
         <p className="my-4">Trending now</p>
-        <CarouselContent className="-ml-7">
+        <CarouselContent className="-ml-7 relative">
           {animelist.results.map((anime) => {
             return (
               <CarouselItem key={anime.id} className="pl-7 basis-1/6">

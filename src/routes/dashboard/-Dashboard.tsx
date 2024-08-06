@@ -1,8 +1,16 @@
 import { useDashboardStore } from "@/stores/dashboardStore";
 import FeaturedHero from "./-FeaturedHero";
 import { useEffect } from "react";
-import AnimeDisplayType from "./components/-AnimeDisplayType";
-import { useFetchPopularAnime, useFetchTrendingAnime } from "@/api/anime-fetch";
+import AnimeCategory from "./components/-AnimeCategory";
+import {
+  useFetchFavoriteAnime,
+  useFetchPopularAnime,
+  useFetchPopularAnimeMovies,
+  useFetchTrendingAnime,
+  useFetchUpcomingAnime,
+} from "@/api/anime-fetch";
+import LoadingScreen from "../components/-LoadingScreen";
+import FeaturedCard from "./components/-FeaturedCard";
 
 export default function Dashboard() {
   const {
@@ -11,6 +19,10 @@ export default function Dashboard() {
     isLoading,
   } = useFetchTrendingAnime();
   const { data: popularAnimeLists } = useFetchPopularAnime();
+  const { data: favouriteAnimeLists } = useFetchFavoriteAnime();
+  const { data: popularAnimeMovies } = useFetchPopularAnimeMovies();
+  const { data: popularUpcomimgAnimes } = useFetchUpcomingAnime();
+  console.log("upcoming:", popularUpcomimgAnimes);
   console.log("testing");
   console.log(trendingAnimeLists);
   const { selectedAnime, setSelectedAnime } = useDashboardStore();
@@ -29,11 +41,7 @@ export default function Dashboard() {
   }, []);
 
   if (isLoading) {
-    return (
-      <div>
-        <p>loading...</p>
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
   if (error) {
@@ -54,7 +62,20 @@ export default function Dashboard() {
             anime={selectedAnime ?? trendingAnimeLists.results[0]}
           />
         </div>
-        <AnimeDisplayType animeList={popularAnimeLists} category="Popular" />
+        {/* <FeaturedCard anime={popularAnimeLists?.results[0]!} /> */}
+        <AnimeCategory animeList={popularAnimeLists} category="Popular Now" />
+        <AnimeCategory
+          animeList={favouriteAnimeLists}
+          category="Most Favorite"
+        />
+        <AnimeCategory
+          animeList={popularAnimeMovies}
+          category="Popular Movies"
+        />
+        <AnimeCategory
+          animeList={popularUpcomimgAnimes}
+          category="Upcoming Animes"
+        />
       </div>
     );
   }
