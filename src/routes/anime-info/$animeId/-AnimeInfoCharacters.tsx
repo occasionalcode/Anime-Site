@@ -4,8 +4,6 @@ import LoadingScreen from "@/routes/components/-LoadingScreen";
 import { unique } from "radash";
 import { useState, useEffect } from "react";
 import CharacterCard from "./components/-CharacterCards";
-import { X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 type Character = {
   name: string;

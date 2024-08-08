@@ -12,37 +12,53 @@ export default function CharacterCard({ character }: CharacterCardProps) {
     <div
       onMouseEnter={() => setHoverTrigger(true)}
       onMouseLeave={() => setHoverTrigger(false)}
-      className={`aspect-[2/3] h-72`}
+      className="relative aspect-[2/3] h-72 font-Montserrat"
     >
-      {!hoverTrigger ? (
-        <>
+      <div className="absolute inset-0 transition-opacity duration-300 ease-in-out">
+        <div className="w-full h-full absolute bg-gradient-to-t from-mainBackground/70 from-[percentage:0%_5%] via-mainBackground/10 to-transparent z-20 transition-opacity duration-300 ease-in-out"></div>
+        <img
+          className={`object-cover rounded-lg h-72 w-full transition-opacity duration-300 ease-in-out ${
+            hoverTrigger ? "opacity-0" : "opacity-100"
+          }`}
+          src={character.image}
+          alt={character.name}
+        />
+        <p
+          className={`absolute font-semibold text-sm bottom-0 z-30 w-full text-wrap text-center text-white line-clamp-1 transition-opacity duration-300 ease-in-out ${
+            hoverTrigger ? "opacity-0" : "opacity-100"
+          }`}
+        >
+          {character.name}
+        </p>
+      </div>
+
+      <div className="absolute inset-0 transition-opacity duration-300 ease-in-out">
+        <div className="w-full h-full absolute bg-gradient-to-t from-mainBackground/85 from-[percentage:0%_10%] via-mainBackground/10 to-transparent z-20 transition-opacity duration-300 ease-in-out"></div>
+        {character.voiceActor.image ? (
           <img
-            className="object-cover rounded-lg h-72 w-full"
-            src={character.image}
-            alt={character.name}
+            className={`object-cover rounded-lg h-72 w-full transition-opacity duration-300 ease-in-out ${
+              hoverTrigger ? "opacity-100" : "opacity-0"
+            }`}
+            src={character.voiceActor.image}
+            alt={character.voiceActor.name}
           />
-          <p className="text-wrap text-center text-white line-clamp-1">
-            {character.name}
-          </p>
-        </>
-      ) : (
-        <>
-          {character.voiceActor.image ? (
-            <img
-              className="object-cover rounded-lg h-72 w-full"
-              src={character.voiceActor.image}
-              alt={character.voiceActor.name}
-            />
-          ) : (
-            <div className="rounded-lg h-72 w-full text-white flex justify-center items-center">
-              ?
-            </div>
-          )}
-          <p className="text-wrap text-center text-white">
-            {character.voiceActor.name}
-          </p>
-        </>
-      )}
+        ) : (
+          <div
+            className={`rounded-lg h-72 w-full text-white flex justify-center items-center transition-opacity duration-300 ease-in-out ${
+              hoverTrigger ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            ?
+          </div>
+        )}
+        <p
+          className={`absolute font-semibold text-sm z-20 bottom-0 w-full text-wrap text-center text-white line-clamp-1 transition-opacity duration-300 ease-in-out ${
+            hoverTrigger ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          {character.voiceActor.name}
+        </p>
+      </div>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { useFetchAnimeInfo } from "@/api/animeinfo-fetch";
 import LoadingScreen from "@/routes/components/-LoadingScreen";
 import { Angry, Heart, Laugh, Meh, Smile } from "lucide-react";
 import AnimeInfoNav from "./-AnimeInfoNav";
-import { useRef, useState } from "react";
+import ErrorScreen from "@/routes/components/-ErrorScreen";
 
 type AnimeInfoProps = {
   id: string;
@@ -15,11 +15,7 @@ export default function AnimeInfo({ id }: AnimeInfoProps) {
   }
 
   if (error) {
-    return (
-      <div>
-        <p>error</p>
-      </div>
-    );
+    return <ErrorScreen />;
   }
 
   if (anifyLists) {
