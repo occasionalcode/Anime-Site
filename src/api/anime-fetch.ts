@@ -8,10 +8,11 @@ export function useFetchTrendingAnime() {
     queryFn: async () => {
       console.log("fetching counters");
       const { data: trendingAnime } = await axios.get(
-        `https://consumet-sitegabriel.vercel.app/meta/anilist/advanced-search?sort=["TRENDING_DESC"]&!status=NOT_YET_RELEASED`
+        `https://consumet-sitegabriel.vercel.app/meta/anilist/advanced-search?sort=["TRENDING_DESC"]&status=RELEASING`
       );
       return trendingAnime as AnimeLists;
     },
+    gcTime: Infinity,
     staleTime: Infinity,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
@@ -29,6 +30,7 @@ export function useFetchPopularAnime() {
       );
       return popularAnime as AnimeLists;
     },
+    gcTime: Infinity,
     staleTime: Infinity,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
@@ -46,6 +48,7 @@ export function useFetchFavoriteAnime() {
       );
       return favouriteAnime as AnimeLists;
     },
+    gcTime: Infinity,
     staleTime: Infinity,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
@@ -63,6 +66,7 @@ export function useFetchPopularAnimeMovies() {
       );
       return popularAnimeMovies as AnimeLists;
     },
+    gcTime: Infinity,
     staleTime: Infinity,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
@@ -80,6 +84,7 @@ export function useFetchUpcomingAnime() {
       );
       return popularAnimeMovies as AnimeLists;
     },
+    gcTime: Infinity,
     staleTime: Infinity,
     refetchOnMount: false,
     refetchOnWindowFocus: false,

@@ -23,7 +23,7 @@ export default function AnimeCards({ anime, category }: AnimeCardsProps) {
           alt={anime.title.english ?? anime.title.romaji ?? anime.title.native}
         />
       </div>
-      <div className="flex  text-sm text-white text-center items-end w-full ">
+      <div className="flex pt-2 text-sm text-white text-center items-end w-full ">
         <p className="line-clamp-1 text-wrap w-full text-center text-white">
           {anime.title.english ?? anime.title.romaji ?? anime.title.native}
         </p>

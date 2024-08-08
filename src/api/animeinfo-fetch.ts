@@ -12,6 +12,24 @@ export function useFetchAnimeInfo(id: string) {
       );
       return animeInfo as Anifylists;
     },
+    gcTime: Infinity,
+    staleTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    retry: false,
+  });
+}
+export function useFetchAnimeNextAiringEpisode(id: string) {
+  return useQuery<Anifylists>({
+    queryKey: ["trendingAnime", id],
+    queryFn: async () => {
+      console.log("fetching counters");
+      const { data: animeInfo } = await axios.get(
+        `https://anify.eltik.cc/schedule`
+      );
+      return animeInfo as Anifylists;
+    },
+    gcTime: Infinity,
     staleTime: Infinity,
     refetchOnMount: false,
     refetchOnWindowFocus: false,

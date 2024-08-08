@@ -1,5 +1,6 @@
 import { Anime, AnimeLists } from "@/types/anilist-types";
 import FeaturedCarousel from "./-FeaturedCarousel";
+import { Link } from "@tanstack/react-router";
 
 type FeaturedHeroProps = {
   anime: Anime;
@@ -34,7 +35,7 @@ export default function FeaturedHero({ anime, animelist }: FeaturedHeroProps) {
                     return (
                       <div
                         key={genre}
-                        className={`text-white bg-slate-500 font-base rounded-3xl px-3 py-1 flex-wrap my-4 `}
+                        className={`text-white border-2 border-red-700 font-base rounded-3xl px-3 py-1 flex-wrap my-4 `}
                       >
                         <p className={`text-sm  `}>{genre}</p>
                       </div>
@@ -42,9 +43,11 @@ export default function FeaturedHero({ anime, animelist }: FeaturedHeroProps) {
                   })}
                 </div>
                 <div className="flex flex-row justify-start w-full gap-5">
-                  <button className="border-white border-2 px-7 py-2 rounded-sm">
-                    Watch Trailer
-                  </button>
+                  <Link to={`../anime-info/${anime.id}`}>
+                    <button className="bg-white border-2 px-7 py-2 rounded-sm text-black">
+                      More Info
+                    </button>
+                  </Link>
                   <button className="bg-red-700 px-7 py-2 rounded-sm">
                     Watch Now
                   </button>
@@ -52,15 +55,17 @@ export default function FeaturedHero({ anime, animelist }: FeaturedHeroProps) {
               </div>
 
               <div className="flex justify-center items-center  w-full overflow-hidden ">
-                <img
-                  className="aspect-[2/3] h-96 rounded-2xl"
-                  src={anime.image}
-                  alt={
-                    anime.title.english ??
-                    anime.title.romaji ??
-                    anime.title.native
-                  }
-                />
+                <Link to={`../anime-info/${anime.id}`}>
+                  <img
+                    className="aspect-[2/3] h-96 rounded-2xl"
+                    src={anime.image}
+                    alt={
+                      anime.title.english ??
+                      anime.title.romaji ??
+                      anime.title.native
+                    }
+                  />
+                </Link>
               </div>
             </div>
 

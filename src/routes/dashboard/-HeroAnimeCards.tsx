@@ -10,7 +10,7 @@ export default function HeroAnimeCards({
   anime,
   category,
 }: HeroAnimeCardsProps) {
-  const { setSelectedAnime, selectedAnime } = useDashboardStore();
+  const { setSelectedAnime } = useDashboardStore();
   return (
     <div
       className=" flex flex-col aspect-[3/4] h-52 overflow-hidden text-center"
