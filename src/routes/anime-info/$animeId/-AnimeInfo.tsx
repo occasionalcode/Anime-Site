@@ -68,7 +68,7 @@ export default function AnimeInfo({ id }: AnimeInfoProps) {
               </div>
             </div>
           </div>
-          <div className="z-20 w-full px-32 flex flex-row gap-5 ">
+          <div className="z-20 w-full px-32">
             <AnimeInfoNav id={`${anifyLists.id}`} />
           </div>
         </div>

@@ -7,7 +7,7 @@ type AnimeCardsProps = {
 };
 
 export default function AnimeCards({ anime, category }: AnimeCardsProps) {
-  const { setSelectedAnime, selectedAnime } = useDashboardStore();
+  const { setSelectedAnime } = useDashboardStore();
   return (
     <div
       className=" flex flex-col justify-between  aspect-[3/4] h-64 overflow-hidden text-center"
