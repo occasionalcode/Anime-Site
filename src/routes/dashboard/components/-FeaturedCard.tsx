@@ -1,4 +1,4 @@
-import { Anime, AnimeLists } from "@/types/anilist-types";
+import { Anime, AnilistLists } from "@/types/anilist-types";
 
 type FeaturedCardProps = {
   anime: Anime;

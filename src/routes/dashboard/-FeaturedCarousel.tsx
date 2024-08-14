@@ -5,12 +5,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carouselFeatured";
-import { AnimeLists } from "@/types/anilist-types";
+import { AnilistLists } from "@/types/anilist-types";
 import HeroAnimeCards from "./-HeroAnimeCards";
 import { Link } from "@tanstack/react-router";
 
 type FeaturedCarouselProps = {
-  animelist: AnimeLists;
+  animelist: AnilistLists;
 };
 
 export default function FeaturedCarousel({ animelist }: FeaturedCarouselProps) {

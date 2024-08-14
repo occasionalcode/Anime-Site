@@ -3,11 +3,11 @@ import FeaturedHero from "./-FeaturedHero";
 import { useEffect } from "react";
 import AnimeCategory from "./components/-AnimeCategory";
 import {
-  useFetchFavoriteAnime,
-  useFetchPopularAnime,
-  useFetchPopularAnimeMovies,
-  useFetchTrendingAnime,
-  useFetchUpcomingAnime,
+  useFetchAnilistFavoriteAnime,
+  useFetchAnilistPopularAnime,
+  useFetchAnilistPopularAnimeMovies,
+  useFetchAnilistTrendingAnime,
+  useFetchAnilistPopularUpcomingAnime,
 } from "@/api/anime-fetch";
 import LoadingScreen from "../components/-LoadingScreen";
 import FeaturedCard from "./components/-FeaturedCard";
@@ -17,11 +17,11 @@ export default function Dashboard() {
     data: trendingAnimeLists,
     error,
     isLoading,
-  } = useFetchTrendingAnime();
-  const { data: popularAnimeLists } = useFetchPopularAnime();
-  const { data: favouriteAnimeLists } = useFetchFavoriteAnime();
-  const { data: popularAnimeMovies } = useFetchPopularAnimeMovies();
-  const { data: popularUpcomimgAnimes } = useFetchUpcomingAnime();
+  } = useFetchAnilistTrendingAnime();
+  const { data: popularAnimeLists } = useFetchAnilistPopularAnime();
+  const { data: favouriteAnimeLists } = useFetchAnilistFavoriteAnime();
+  const { data: popularAnimeMovies } = useFetchAnilistPopularAnimeMovies();
+  const { data: popularUpcomimgAnimes } = useFetchAnilistPopularUpcomingAnime();
   console.log("upcoming:", popularUpcomimgAnimes);
   console.log("testing");
   console.log(trendingAnimeLists);

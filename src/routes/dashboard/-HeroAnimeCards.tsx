@@ -27,13 +27,6 @@ export default function HeroAnimeCards({
         </div>
         <img src={anime.image} alt={anime.title.english} />
       </div>
-
-      {/* <div>
-        <img src={`${anime.cover}`} alt={anime.title.english} />
-      </div> */}
-      {/* <div>
-        <p>{anime.description}</p>
-      </div> */}
     </div>
   );
 }

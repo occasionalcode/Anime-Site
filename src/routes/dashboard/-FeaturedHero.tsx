@@ -1,10 +1,10 @@
-import { Anime, AnimeLists } from "@/types/anilist-types";
+import { Anime, AnilistLists } from "@/types/anilist-types";
 import FeaturedCarousel from "./-FeaturedCarousel";
 import { Link } from "@tanstack/react-router";
 
 type FeaturedHeroProps = {
   anime: Anime;
-  animelist: AnimeLists;
+  animelist: AnilistLists;
 };
 
 export default function FeaturedHero({ anime, animelist }: FeaturedHeroProps) {

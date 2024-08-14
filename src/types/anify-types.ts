@@ -1,4 +1,4 @@
-export type Anifylists = {
+export type AnifyInfo = {
   id: string;
   slug: string;
   coverImage: string;

@@ -17,7 +17,7 @@ export default function AnimeInfoNav({ id }: AnimeInfoNavProps) {
 
   return (
     <div>
-      <nav>
+      <nav className="pb-10">
         <ul className="flex w-full justify-start gap-10 text-white font-semibold text-lg">
           <li onClick={() => setNavigation("Overview")}>Overview</li>
           <li onClick={() => setNavigation("Episodes")}>Episodes</li>

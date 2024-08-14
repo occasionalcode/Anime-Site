@@ -1,4 +1,4 @@
-import { useFetchAnimeInfo } from "@/api/animeinfo-fetch";
+import { useFetchAnifyAnimeInfo } from "@/api/animeinfo-fetch";
 import ErrorScreen from "@/routes/components/-ErrorScreen";
 import LoadingScreen from "@/routes/components/-LoadingScreen";
 import AnimeInfoCarousel from "./components/-AnimeInfoCarousel";
@@ -8,7 +8,7 @@ type AnimeInfoOverviewProps = {
 };
 
 export default function AnimeInfoOverview({ id }: AnimeInfoOverviewProps) {
-  const { data: anifylists, isLoading, error } = useFetchAnimeInfo(id);
+  const { data: anifylists, isLoading, error } = useFetchAnifyAnimeInfo(id);
   if (isLoading) {
     <LoadingScreen />;
   }
@@ -18,7 +18,7 @@ export default function AnimeInfoOverview({ id }: AnimeInfoOverviewProps) {
 
   if (anifylists) {
     return (
-      <div className="w-full py-5">
+      <div className="w-full">
         <div className="flex flex-col">
           <div className="text-white w-full text-wrap flex flex-col gap-2">
             <h3 className="text-2xl font-bold">Description</h3>

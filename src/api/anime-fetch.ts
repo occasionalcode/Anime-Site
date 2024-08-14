@@ -1,16 +1,16 @@
-import { AnimeLists } from "@/types/anilist-types";
+import { AnilistInfo, AnilistLists } from "@/types/anilist-types";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-export function useFetchTrendingAnime() {
-  return useQuery<AnimeLists>({
+export function useFetchAnilistTrendingAnime() {
+  return useQuery<AnilistLists>({
     queryKey: ["trendingAnime"],
     queryFn: async () => {
       console.log("fetching counters");
       const { data: trendingAnime } = await axios.get(
         `https://consumet-sitegabriel.vercel.app/meta/anilist/advanced-search?sort=["TRENDING_DESC"]&status=RELEASING`
       );
-      return trendingAnime as AnimeLists;
+      return trendingAnime as AnilistLists;
     },
     gcTime: Infinity,
     staleTime: Infinity,
@@ -20,15 +20,15 @@ export function useFetchTrendingAnime() {
   });
 }
 
-export function useFetchPopularAnime() {
-  return useQuery<AnimeLists>({
+export function useFetchAnilistPopularAnime() {
+  return useQuery<AnilistLists>({
     queryKey: ["popularAnime"],
     queryFn: async () => {
       console.log("fetching counters");
       const { data: popularAnime } = await axios.get(
         `https://consumet-sitegabriel.vercel.app/meta/anilist/advanced-search?sort=["POPULARITY_DESC"]&status=RELEASING`
       );
-      return popularAnime as AnimeLists;
+      return popularAnime as AnilistLists;
     },
     gcTime: Infinity,
     staleTime: Infinity,
@@ -38,15 +38,15 @@ export function useFetchPopularAnime() {
   });
 }
 
-export function useFetchFavoriteAnime() {
-  return useQuery<AnimeLists>({
+export function useFetchAnilistFavoriteAnime() {
+  return useQuery<AnilistLists>({
     queryKey: ["favouriteAnime"],
     queryFn: async () => {
       console.log("fetching counters");
       const { data: favouriteAnime } = await axios.get(
         `https://consumet-sitegabriel.vercel.app/meta/anilist/advanced-search?sort=["FAVOURITES_DESC"]`
       );
-      return favouriteAnime as AnimeLists;
+      return favouriteAnime as AnilistLists;
     },
     gcTime: Infinity,
     staleTime: Infinity,
@@ -56,15 +56,15 @@ export function useFetchFavoriteAnime() {
   });
 }
 
-export function useFetchPopularAnimeMovies() {
-  return useQuery<AnimeLists>({
+export function useFetchAnilistPopularAnimeMovies() {
+  return useQuery<AnilistLists>({
     queryKey: ["popularAnimeMovies"],
     queryFn: async () => {
       console.log("fetching counters");
       const { data: popularAnimeMovies } = await axios.get(
         `https://consumet-sitegabriel.vercel.app/meta/anilist/advanced-search?format=MOVIE&sort=["POPULARITY_DESC"]`
       );
-      return popularAnimeMovies as AnimeLists;
+      return popularAnimeMovies as AnilistLists;
     },
     gcTime: Infinity,
     staleTime: Infinity,
@@ -74,15 +74,33 @@ export function useFetchPopularAnimeMovies() {
   });
 }
 
-export function useFetchUpcomingAnime() {
-  return useQuery<AnimeLists>({
-    queryKey: ["popularUpomingAnimes"],
+export function useFetchAnilistPopularUpcomingAnime() {
+  return useQuery<AnilistLists>({
+    queryKey: ["popularUpcomingAnimes"],
     queryFn: async () => {
       console.log("fetching counters");
-      const { data: popularAnimeMovies } = await axios.get(
+      const { data: popularUpcomingAnimes } = await axios.get(
         `https://consumet-sitegabriel.vercel.app/meta/anilist/advanced-search?sort=["POPULARITY_DESC","SCORE_DESC"]&status=NOT_YET_RELEASED`
       );
-      return popularAnimeMovies as AnimeLists;
+      return popularUpcomingAnimes as AnilistLists;
+    },
+    gcTime: Infinity,
+    staleTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    retry: false,
+  });
+}
+
+export function useFetchAnilistInfo(animeId: string) {
+  return useQuery<AnilistInfo>({
+    queryKey: ["anilistEpisodes", animeId],
+    queryFn: async () => {
+      console.log("fetching counters");
+      const { data: anilistEpisodes } = await axios.get(
+        `https://consumet-sitegabriel.vercel.app/meta/anilist/info/${animeId}`
+      );
+      return anilistEpisodes as AnilistInfo;
     },
     gcTime: Infinity,
     staleTime: Infinity,

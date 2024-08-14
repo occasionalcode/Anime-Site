@@ -1,4 +1,4 @@
-import { AnimeLists } from "@/types/anilist-types";
+import { AnilistLists } from "@/types/anilist-types";
 import AnimeCards from "./-AnimeCards";
 import {
   Carousel,
@@ -10,7 +10,7 @@ import {
 import { Link } from "@tanstack/react-router";
 
 type AnimeCategoryProps = {
-  animeList: AnimeLists | undefined;
+  animeList: AnilistLists | undefined;
   category: string;
 };
 

@@ -5,7 +5,7 @@ import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 
 export const Route = createRootRoute({
   component: () => (
-    <div>
+    <div className="font-Montserrat">
       <Navbar />
       <Outlet />
     </div>

@@ -1,4 +1,4 @@
-import { useFetchAnimeInfo } from "@/api/animeinfo-fetch";
+import { useFetchAnifyAnimeInfo } from "@/api/animeinfo-fetch";
 import ErrorScreen from "@/routes/components/-ErrorScreen";
 import LoadingScreen from "@/routes/components/-LoadingScreen";
 import { unique } from "radash";
@@ -13,7 +13,11 @@ type AnimeInfoCharactersProps = {
 };
 
 export default function AnimeInfoCharacters({ id }: AnimeInfoCharactersProps) {
-  const { data: anifycharacterData, isLoading, error } = useFetchAnimeInfo(id);
+  const {
+    data: anifycharacterData,
+    isLoading,
+    error,
+  } = useFetchAnifyAnimeInfo(id);
   const {
     characterCurrentPagination: characterPagination,
     setCharacterCurrentPagination: setCharacterPagination,
@@ -53,7 +57,7 @@ export default function AnimeInfoCharacters({ id }: AnimeInfoCharactersProps) {
     const totalPages = Math.ceil(totalCharacters / postPerPage);
 
     return (
-      <div className="overflow-auto pt-10 font-Montserrat">
+      <div className="overflow-auto  font-Montserrat">
         <div className="pb-5 flex flex-row gap-2">
           <div className="w-1 rounded-3xl bg-white"></div>
           <h3 className="font-semibold text-xl text-white">

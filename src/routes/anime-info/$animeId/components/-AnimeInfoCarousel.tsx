@@ -1,4 +1,4 @@
-import { AnimeLists } from "@/types/anilist-types";
+import { AnilistLists } from "@/types/anilist-types";
 
 import {
   Carousel,
@@ -9,9 +9,9 @@ import {
 } from "@/components/ui/carouselAnimeCategory";
 import { Link } from "@tanstack/react-router";
 import AnimeCards from "@/routes/dashboard/components/-AnimeCards";
-import { Anifylists, Character } from "@/types/anify-types";
+import { AnifyInfo, Character } from "@/types/anify-types";
 import CharacterCard from "./-CharacterCards";
-import { useFetchAnimeInfo } from "@/api/animeinfo-fetch";
+import { useFetchAnifyAnimeInfo } from "@/api/animeinfo-fetch";
 import { unique } from "radash";
 import LoadingScreen from "@/routes/components/-LoadingScreen";
 import ErrorScreen from "@/routes/components/-ErrorScreen";
@@ -25,7 +25,7 @@ export default function AnimeInfoCarousel({
   id,
   category,
 }: AnimeInfoCarouselProps) {
-  const { data: data, isLoading, error } = useFetchAnimeInfo(id);
+  const { data: data, isLoading, error } = useFetchAnifyAnimeInfo(id);
 
   if (isLoading) {
     <LoadingScreen />;
