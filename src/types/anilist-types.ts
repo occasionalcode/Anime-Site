@@ -9,7 +9,7 @@ export type AnilistLists = {
 export type Anime = {
   id: string;
   malId: number;
-  title: Title;
+  title: AnilistTitle;
   status: Status;
   image: string;
   imageHash: Hash;
@@ -31,12 +31,18 @@ export enum CountryOfOrigin {
   Jp = "JP",
 }
 
-export type Status = {
-  Completed: "Completed";
-  Ongoing: "Ongoing";
-};
-
-export type Title = {
+export enum Status {
+  RELEASING = "RELEASING",
+  Ongoing = "Ongoing",
+  FINISHED = "FINISHED",
+  Completed = "Completed",
+  NotYetAired = "Not yet aired",
+  NOT_YET_RELEASED = "NOT_YET_RELEASED",
+  CANCELLED = "CANCELLED",
+  HIATUS = "HIATUS",
+  Cancelled = "Cancelled",
+}
+export type AnilistTitle = {
   romaji: string;
   english: string;
   native: string;
@@ -49,7 +55,7 @@ export enum Type {
 
 export interface AnilistInfo {
   id: string;
-  title: Title;
+  title: AnilistTitle;
   malId: number;
   synonyms: string[];
   isLicensed: boolean;
@@ -80,7 +86,7 @@ export interface AnilistInfo {
   relations: Relation[];
   mappings: Mapping[];
   artwork: Artwork[];
-  episodes: Episode[];
+  episodes: AnilistEpisode[];
 }
 
 export interface Artwork {
@@ -156,7 +162,7 @@ export interface EndDateClass {
   day: number;
 }
 
-export interface Episode {
+export interface AnilistEpisode {
   id: string;
   title: string;
   description: null;
@@ -176,7 +182,7 @@ export interface Mapping {
 export interface Recommendation {
   id: number;
   malId: number;
-  title: Title;
+  title: AnilistTitle;
   status: Status;
   episodes: number | null;
   image: string;
@@ -196,7 +202,7 @@ export interface Relation {
   id: number;
   relationType: string;
   malId: number;
-  title: Title;
+  title: AnilistTitle;
   status: Status;
   episodes: number | null;
   image: string;

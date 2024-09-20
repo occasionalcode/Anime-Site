@@ -29,8 +29,8 @@ if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <QueryClientProvider client={queryClient}>
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       <StrictMode>
-        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
         <RouterProvider router={router} />
       </StrictMode>
     </QueryClientProvider>

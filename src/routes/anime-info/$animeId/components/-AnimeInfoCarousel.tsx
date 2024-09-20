@@ -54,17 +54,18 @@ export default function AnimeInfoCarousel({
               className="w-full "
             >
               <CarouselContent>
-                {unique(data!.characters, (data) => data.name)?.map(
-                  (anime, i) => {
-                    return (
-                      <Link>
-                        <CarouselItem key={i} className="basis-1/7">
-                          <CharacterCard character={anime} />
-                        </CarouselItem>
-                      </Link>
-                    );
-                  }
-                )}
+                {data.characters &&
+                  unique(data!.characters, (data) => data.name)?.map(
+                    (anime, i) => {
+                      return (
+                        <Link key={i}>
+                          <CarouselItem className="basis-1/7">
+                            <CharacterCard character={anime} />
+                          </CarouselItem>
+                        </Link>
+                      );
+                    }
+                  )}
 
                 {/* <CharacterCard character={data?.characters!} /> */}
               </CarouselContent>

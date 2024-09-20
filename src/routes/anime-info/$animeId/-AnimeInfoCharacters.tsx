@@ -50,10 +50,10 @@ export default function AnimeInfoCharacters({ id }: AnimeInfoCharactersProps) {
   }
 
   if (anifycharacterData) {
-    const totalCharacters = unique(
-      anifycharacterData.characters,
-      (character) => character.name
-    ).length;
+    const totalCharacters = anifycharacterData.characters
+      ? unique(anifycharacterData.characters, (character) => character.name)
+          .length
+      : 0;
     const totalPages = Math.ceil(totalCharacters / postPerPage);
 
     return (

@@ -2,6 +2,7 @@ import { AnilistInfo, AnilistLists } from "@/types/anilist-types";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
+// used to fetch Trending Anime
 export function useFetchAnilistTrendingAnime() {
   return useQuery<AnilistLists>({
     queryKey: ["trendingAnime"],
@@ -20,6 +21,7 @@ export function useFetchAnilistTrendingAnime() {
   });
 }
 
+// Used to fetch popular Animes
 export function useFetchAnilistPopularAnime() {
   return useQuery<AnilistLists>({
     queryKey: ["popularAnime"],
@@ -38,6 +40,7 @@ export function useFetchAnilistPopularAnime() {
   });
 }
 
+// used to fetch most favorite anime
 export function useFetchAnilistFavoriteAnime() {
   return useQuery<AnilistLists>({
     queryKey: ["favouriteAnime"],
@@ -56,6 +59,7 @@ export function useFetchAnilistFavoriteAnime() {
   });
 }
 
+// used to fetch popular anime movies
 export function useFetchAnilistPopularAnimeMovies() {
   return useQuery<AnilistLists>({
     queryKey: ["popularAnimeMovies"],
@@ -74,6 +78,7 @@ export function useFetchAnilistPopularAnimeMovies() {
   });
 }
 
+// used to fetch popular upcoming animes
 export function useFetchAnilistPopularUpcomingAnime() {
   return useQuery<AnilistLists>({
     queryKey: ["popularUpcomingAnimes"],
@@ -92,15 +97,35 @@ export function useFetchAnilistPopularUpcomingAnime() {
   });
 }
 
+// used to fetch anilist infos and episodes
 export function useFetchAnilistInfo(animeId: string) {
   return useQuery<AnilistInfo>({
-    queryKey: ["anilistEpisodes", animeId],
+    queryKey: ["anilistInfo", animeId],
     queryFn: async () => {
       console.log("fetching counters");
-      const { data: anilistEpisodes } = await axios.get(
+      const { data: anilistInfo } = await axios.get(
         `https://consumet-sitegabriel.vercel.app/meta/anilist/info/${animeId}`
       );
-      return anilistEpisodes as AnilistInfo;
+      return anilistInfo as AnilistInfo;
+    },
+    gcTime: Infinity,
+    staleTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    retry: false,
+  });
+}
+
+// used to fetch quick anime info for faster loading
+export function useFetchAnilistQuickInfo(animeId: string) {
+  return useQuery<AnilistInfo>({
+    queryKey: ["anilistQuickInfo", animeId],
+    queryFn: async () => {
+      console.log("fetching counters");
+      const { data: anilistQuickInfo } = await axios.get(
+        `https://consumet-sitegabriel.vercel.app/meta/anilist/data/${animeId}`
+      );
+      return anilistQuickInfo as AnilistInfo;
     },
     gcTime: Infinity,
     staleTime: Infinity,

@@ -23,7 +23,7 @@ export type AnifyInfo = {
   totalEpisodes: number;
   genres: string[];
   tags: string[];
-  episodes: Episodes;
+  episodes: AnifyEpisodes;
   averageRating: number;
   averagePopularity: number;
   artwork: Artwork[];
@@ -62,7 +62,7 @@ export type VoiceActor = {
   image: null | string;
 };
 
-export type Episodes = {
+export type AnifyEpisodes = {
   data: Datum[];
   latest: Latest;
 };
