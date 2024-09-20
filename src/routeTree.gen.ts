@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as DashboardIndexImport } from './routes/dashboard/index'
+import { Route as AnimeInfoAnimeIdIndexImport } from './routes/anime-info/$animeId/index'
 
 // Create/Update Routes
 
@@ -23,6 +24,11 @@ const IndexRoute = IndexImport.update({
 
 const DashboardIndexRoute = DashboardIndexImport.update({
   path: '/dashboard/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AnimeInfoAnimeIdIndexRoute = AnimeInfoAnimeIdIndexImport.update({
+  path: '/anime-info/$animeId/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -44,6 +50,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexImport
       parentRoute: typeof rootRoute
     }
+    '/anime-info/$animeId/': {
+      id: '/anime-info/$animeId/'
+      path: '/anime-info/$animeId'
+      fullPath: '/anime-info/$animeId'
+      preLoaderRoute: typeof AnimeInfoAnimeIdIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -52,6 +65,7 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
   DashboardIndexRoute,
+  AnimeInfoAnimeIdIndexRoute,
 })
 
 /* prettier-ignore-end */
@@ -63,7 +77,8 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/dashboard/"
+        "/dashboard/",
+        "/anime-info/$animeId/"
       ]
     },
     "/": {
@@ -71,6 +86,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/dashboard/": {
       "filePath": "dashboard/index.tsx"
+    },
+    "/anime-info/$animeId/": {
+      "filePath": "anime-info/$animeId/index.tsx"
     }
   }
 }

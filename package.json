@@ -10,8 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@fontsource/roboto": "^5.0.14",
+    "@mui/icons-material": "^5.16.6",
+    "@mui/material": "^5.16.6",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "@radix-ui/react-slot": "^1.1.0",
     "@tanstack/react-query": "^5.51.1",
+    "@tanstack/react-query-devtools": "4",
     "@tanstack/react-router": "^1.45.0",
     "@tanstack/router-devtools": "^1.45.1",
     "@tanstack/router-plugin": "^1.45.0",
@@ -24,6 +31,7 @@
     "radash": "^12.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "styled-components": "^6.1.12",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "zustand": "^4.5.4"
