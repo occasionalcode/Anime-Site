@@ -1,11 +1,12 @@
 import Navbar from "@/layout/-Navbar";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 
 export const Route = createRootRoute({
   component: () => (
-    <div>
+    <div className="font-Montserrat">
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       <Navbar />
       <Outlet />
     </div>

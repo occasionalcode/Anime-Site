@@ -1,16 +1,21 @@
-import { useFetchAnime } from "@/api/anime-fetch";
-import { Anime } from "@/types/anime-types";
-import test from "node:test";
+import { Anime } from "@/types/anilist-types";
 import { create } from "zustand";
 
-type DashboardStore = {
+type DashboardStoreValues = {
   selectedAnime: Anime | undefined;
+};
+
+type DashboardStoreAction = {
   setSelectedAnime: (anime: Anime) => void;
-  // selectedItemID: string;
-  // setSelectedItemID: (selectedItem: string) => void;
+};
+
+type DashboardStore = DashboardStoreAction & DashboardStoreValues;
+
+const dashboardStoreDefaultValues: DashboardStoreValues = {
+  selectedAnime: undefined,
 };
 
 export const useDashboardStore = create<DashboardStore>((set) => ({
-  selectedAnime: undefined,
+  ...dashboardStoreDefaultValues,
   setSelectedAnime: (anime: Anime) => set({ selectedAnime: anime }),
 }));
